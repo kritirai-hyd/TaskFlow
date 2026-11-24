@@ -140,7 +140,7 @@ Make sure the following software is installed:
 bash
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/kritirai-hyd/TaskFlow
 cd TaskFlow
 ```
 
