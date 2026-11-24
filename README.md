@@ -4,8 +4,6 @@ Writing
 
 # TaskFlow
 
-[\!\[standard-readme compliant\](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](<https://github.com/RichardLitt/standard-readme>)
-
 TaskFlow is a full-stack project management application that helps users organize projects, create and manage tasks, set priorities, track progress, and manage due dates.
 
 ## Table of Contents
@@ -194,15 +192,6 @@ bash
 ```bash
 gradlew.bat bootRun
 ```
-
-**Linux/macOS:**
-
-bash
-
-```bash
-./gradlew bootRun
-```
-
 The backend server will run at:
 
 `http://localhost:8080`
