@@ -1,0 +1,33 @@
+.projects{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}
+.projects h1{font-size:28px;color:#1e293b;margin:0 0 8px}
+.add{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 15px;background:#b91c1c;color:white;border:0;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer}
+.add:hover,.create:hover{background:#b91c1c}
+.msg{background:#fee2e2;color:#b91c1c;padding:13px 15px;border-radius:8px;margin-bottom:20px;font-size:14px}
+.form{background:white;padding:20px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:25px;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+.form h2{font-size:19px;color:#1e293b;margin:0 0 18px}
+.wrap,.container{width:100%;overflow-x:auto}
+.table,.task{width:100%;border-collapse:collapse;text-align:left}
+.table{min-width:750px}
+.table th,.task th{padding:13px;background:#f8fafc;color:#475569;font-size:12px;border-bottom:1px solid #e2e8f0}
+.table td{padding:12px;border-bottom:1px solid #f1f5f9}
+.table input,.table textarea,.table select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #cbd5e1;border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:#334155;background:white}
+.table input:focus,.table textarea:focus,.table select:focus{border-color:#6900}
+.table textarea{resize:vertical}
+.action{display:flex;gap:7px;align-items:center}
+.create,.del{padding:9px 12px;border:0;border-radius:6px;font-size:12px;cursor:pointer}
+.create{background:#a30000;color:white;font-weight:600}
+.del{background:#f1f5f9;color:#475569}
+.del:hover{background:#e2e8f0}
+.tasks{margin-top:25px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px;gap:10px}
+.header h2{font-size:21px;color:#1e293b;margin:0}
+.count{color:#64748b;font-size:13px;font-weight:600}
+.container{background:white;border:1px solid #e2e8f0;border-radius:10px}
+.task{min-width:850px}
+.task th{padding:14px;font-weight:700;white-space:nowrap}
+.task td{padding:13px 14px;color:#64748b;font-size:13px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+.task tbody tr:hover{background:#f8fafc}
+.task tbody tr:last-child td{border-bottom:none}
+.blank{text-align:center;padding:30px!important;color:#94a3b8!important}
+@media(max-width:768px){.projects h1{font-size:24px}.form{padding:15px}.header h2{font-size:18px}}
+@media(max-width:600px){.projects{align-items:flex-start}.projects .add{flex-shrink:0}.header{align-items:flex-start}.container,.wrap{border-radius:8px}}

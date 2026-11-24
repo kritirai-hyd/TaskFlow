@@ -1,0 +1,28 @@
+
+.login { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; width: 100%; background: #fffff0; box-sizing: border-box; gap: 40px; }
+.left { width: 50%; min-height: 100vh; padding: 60px; background: #720800; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; }
+.left h1 { font-size: 42px; margin-bottom: 50px; color: #f5dede; }
+.left h2 { font-size: 35px; line-height: 1.4; color: #f5dede; }
+.left p { font-size: 17px; line-height: 1.8; color: #f5dede; text-align: center; max-width: 400px; }
+.card { padding: 3rem 35px; margin: auto; background: white; border-radius: 12px; box-shadow: rgba(0,0,0,.35) 0 5px 15px; }
+.right { width: 50%; padding: 35px; }
+.card h1 { text-align: center; font-size: 30px; color: #720800; margin-bottom: 10px; }
+.heading { text-align: center; color: #6b7280; margin-bottom: 25px; }
+.card label { display: block; font-weight: 600; text-align: left; margin-bottom: 8px; color: #374151; }
+.card input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box; }
+.card input:focus { border-color: #720800; box-shadow: 0 0 0 2px rgba(114,8,0,.12); }
+.signin { width: 200px; padding: 13px; background: #720800; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+.signin:hover { background: #500600; }
+.msg { background: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
+.bottom { text-align: center; margin-top: 22px; color: #6b7280; }
+.bottom a { color: #720800; font-weight: 600; text-decoration: none; }
+.bottom a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .login { flex-direction: column; gap: 20px; padding-bottom: 25px; }
+  .left { width: 100%; min-height: 260px; padding: 30px; }
+  .left h1 { margin-bottom: 15px; font-size: 32px; }
+  .left h2 { font-size: 25px; }
+  .left p { font-size: 14px; }
+  .card { width: 90%; margin: 0 auto; padding: 25px; box-sizing: border-box; }
+}

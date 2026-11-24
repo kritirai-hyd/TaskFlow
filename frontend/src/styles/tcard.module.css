@@ -1,0 +1,14 @@
+.name{color:#1e293b!important;font-weight:600;white-space:nowrap}
+.subheading{max-width:220px;overflow-wrap:anywhere;line-height:1.5}
+.prior{display:inline-block;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.priorLOW{background:#dcfce7;color:#15803d}
+.priorMEDIUM{background:#fef3c7;color:#b45309}
+.priorHIGH{background:#fee2e2;color:#dc2626}
+.status,.stactic{padding:7px 10px;border:1px solid #e2e8f0;border-radius:6px;background:#eff6ff;color:#791800;font-size:12px;font-weight:600;white-space:nowrap}
+.status{cursor:pointer;outline:none}
+.buttons{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.del,.view{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:7px 10px;border:0;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;cursor:pointer}
+.del{background:#fee2e2;color:#dc2626}
+.del:hover{background:#fecaca}
+.view{background:#eff6ff;color:#791800}
+.view:hover{background:#791800;color:white}

@@ -1,0 +1,45 @@
+.projects,.header,.action { display:flex; align-items:center; gap:10px; }
+.projects,.header { justify-content:space-between; }
+.projects { margin-bottom:20px; }
+.projects h1 { font-size:26px; margin:0 0 6px; color:#1e293b; }
+.muted,.count { color:#64748b; font-size:13px; }
+.add,.create { background:#a30000; color:white; }
+.add,.create,.del,.delete,.open { display:inline-flex; align-items:center; justify-content:center; gap:5px; padding:8px 11px; border:0; border-radius:6px; font-size:12px; text-decoration:none; cursor:pointer; }
+.add { padding:9px 14px; border-radius:7px; }
+.add:hover,.create:hover { background:#b91c1c; }
+.msg { padding:12px; margin-bottom:18px; background:#fee2e2; color:#b91c1c; border-radius:8px; font-size:13px; }
+.form,.container { background:white; border:1px solid #e2e8f0; border-radius:9px; }
+.form { padding:18px; margin-bottom:22px; }
+.form h2 { font-size:18px; margin:0 0 14px; color:#1e293b; }
+.form input,.form textarea { width:100%; box-sizing:border-box; padding:10px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit; font-size:13px; }
+.form input:focus,.form textarea:focus { outline:none; border-color:#a30000; }
+.form textarea { resize:vertical; }
+.del { background:#f1f5f9; color:#475569; }
+.del:hover { background:#e2e8f0; }
+.tasks { margin-top:22px; }
+.header { margin-bottom:14px; }
+.header h2 { font-size:20px; margin:0; color:#1e293b; }
+.count { font-weight:600; }
+.container { width:100%; overflow-x:auto; }
+.task { width:100%; min-width:650px; border-collapse:collapse; text-align:left; }
+.task th,.task td { padding:12px; border-bottom:1px solid #f1f5f9; }
+.task th { background:#f8fafc; color:#475569; font-size:12px; white-space:nowrap; border-color:#e2e8f0; }
+.task td { color:#64748b; font-size:13px; }
+.task tbody tr:hover { background:#f8fafc; }
+.task tbody tr:last-child td { border:0; }
+.folderIcon { color:#a30000; vertical-align:middle; margin-right:7px; }
+.open,.delete { font-weight:600; }
+.open { background:#000000; color:#fffcfc; }
+.delete { background:#fee2e2; color:#dc2626; }
+.delete:hover { background:#fecaca; }
+.blank { padding:25px !important; text-align:center; color:#94a3b8 !important; }
+@media (max-width:768px) {
+  .projects h1 { font-size:23px; }
+  .form { padding:14px; }
+  .header h2 { font-size:18px; }
+}
+@media (max-width:600px) {
+  .projects { align-items:flex-start; }
+  .projects .add { flex-shrink:0; }
+  .header { align-items:flex-start; }
+}

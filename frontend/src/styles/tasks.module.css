@@ -1,0 +1,30 @@
+.projects { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; }
+.projects h1 { font-size:28px; color:#1e293b; margin:0 0 8px; }
+.muted { color:#64748b; font-size:14px; }
+.msg { background:#fee2e2; color:#b91c1c; padding:13px 15px; border-radius:8px; margin-bottom:20px; font-size:14px; }
+.search { display:flex; align-items:center; gap:10px; width:270px; padding:10px 13px; background:white; border:1px solid #e2e8f0; border-radius:7px; color:#94a3b8; font-size:13px; }
+.count { color:#64748b; font-size:13px; font-weight:600; }
+.container { width:100%; overflow-x:auto; background:white; border:1px solid #e2e8f0; border-radius:10px; }
+.task { width:100%; min-width:950px; border-collapse:collapse; text-align:left; }
+.task th { padding:14px; background:#f8fafc; color:#475569; font-size:12px; font-weight:700; white-space:nowrap; border-bottom:1px solid #e2e8f0; }
+.task td { padding:13px 14px; color:#64748b; font-size:13px; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
+.task tbody tr:hover { background:#f8fafc; }
+.task tbody tr:last-child td { border-bottom:0; }
+.name { color:#1e293b !important; font-weight:600; white-space:nowrap; }
+.description { max-width:220px; line-height:1.5; }
+.priority,.status { display:inline-block; padding:5px 10px; border-radius:20px; font-size:11px; font-weight:600; white-space:nowrap; }
+.priorityLOW { background:#dcfce7; color:#15803d; }
+.priorityMEDIUM { background:#fef3c7; color:#b45309; }
+.priorityHIGH { background:#fee2e2; color:#dc2626; }
+.status { background:#fee2e2; color:#a30000; }
+.open { display:inline-flex; justify-content:center; align-items:center; padding:7px 13px; background:#000000; color:#ffffff; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; }
+.open:hover { background:#a30000; color:white; }
+.blank { text-align:center; padding:30px !important; color:#94a3b8 !important; }
+@media (max-width:900px) {
+  .task { min-width:900px; }
+}
+@media (max-width:600px) {
+  .projects h1 { font-size:24px; }
+  .search { width:100%; box-sizing:border-box; }
+  .container { border-radius:8px; }
+}
