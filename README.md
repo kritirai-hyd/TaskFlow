@@ -1,7 +1,3 @@
-Here is your TaskFlow README rewritten in the Standard Readme style, following a similar structure with Background, Install, Usage, API, Security, Maintainers, Contributing, and License sections.
-
-Writing
-
 # TaskFlow
 
 TaskFlow is a full-stack project management application that helps users organize projects, create and manage tasks, set priorities, track progress, and manage due dates.
