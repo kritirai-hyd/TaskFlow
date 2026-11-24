@@ -108,6 +108,7 @@ TaskFlow/
 │   │       │   ├── repository/
 │   │       │   └── service/
 │   │       └── resources/
+│   │       ├──application.yaml
 │   │
 │   └── build.gradle.kts
 │
