@@ -155,7 +155,7 @@ sql
 CREATE DATABASE taskflow_db;
 ```
 
-Configure your PostgreSQL database credentials in the backend environment variables or `application.yml`.
+Configure your PostgreSQL database credentials in the backend environment variables or `application.yaml`.
 
 ### 3\. Backend Configuration
 
