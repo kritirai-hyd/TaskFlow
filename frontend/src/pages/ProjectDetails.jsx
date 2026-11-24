@@ -12,6 +12,14 @@ const ProjectDetails = () => {
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ title: "", description: "", priority: "MEDIUM", dueDate: "", assigneeId: "" });
+  const [editId, setEditId] = useState(null);
+  const [editForm, setEditForm] = useState({
+  title: "",
+  description: "",
+  priority: "MEDIUM",
+  dueDate: "",
+  assigneeId: ""
+  });
   const fetchProject = async () => {
     try {
       const [p, t] = await Promise.all([api.get(`/projects/${projectId}`), api.get(`/projects/${projectId}/tasks`)]);
@@ -31,6 +39,51 @@ const ProjectDetails = () => {
       await fetchProject();
     } catch (err) { setError(err.response?.data?.message || "Could not create task."); }
   };
+  const editTask = (task) => {
+    setEditId(task.id);
+    setEditForm({
+    title: task.title,
+    description: task.description,
+    priority: task.priority,
+    dueDate: task.dueDate,
+    assigneeId: task.assigneeId
+    })
+    setOpen(false);
+    setError("");
+  }
+  const updateTask = async(e) => {
+     e.preventDefault();
+     setError("");
+    try{
+      const res = await api.put(`/projects/${projectId}/tasks/${editId}`, {
+        ...editForm, assigneeId: editForm.assigneeId ? Number(editForm.assigneeId): null
+      })
+      
+   setEditId(null);
+    setEditForm({
+      title: "",
+      description: "",
+      priority: "MEDIUM",
+      dueDate: "",
+      assigneeId: ""
+    });
+
+    await fetchProject();
+  } catch (err) {
+    setError(err.response?.data?.message || "Could not update task.");
+  }
+  };
+  const cancel = () => {
+  setEditId(null);
+  setEditForm({
+    title: "",
+    description: "",
+    priority: "MEDIUM",
+    dueDate: "",
+    assigneeId: ""
+  });
+  };
+  
   const deleteTask = async id => {
     if (!window.confirm("Delete this task?")) return;
     try {
@@ -44,6 +97,7 @@ const ProjectDetails = () => {
       await fetchProject();
     } catch (err) { setError(err.response?.data?.message || "Could not update task status."); }
   };
+
   return (
     <Layout>
       <div className={styles.projects}>
@@ -83,6 +137,35 @@ const ProjectDetails = () => {
           </div>
         </form>
       )}
+      {editId !== null && (
+      <form className={styles.form} onSubmit={updateTask}>
+    <h2>Edit Task</h2>
+    <div className={styles.wrap}>
+      <table className={styles.table}>
+        <tbody>
+          <tr>
+            <td><input value={editForm.title} onChange={e => setEditForm({...editForm, title: e.target.value})} placeholder="Task title" required maxLength={120} /></td>
+            <td><textarea value={editForm.description} onChange={e => setEditForm({...editForm, description: e.target.value})} placeholder="Description" rows="2" maxLength={2000} /></td>
+            <td>
+              <select value={editForm.priority} onChange={e => setEditForm({...editForm, priority: e.target.value})}>
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+              </select>
+            </td>
+            <td><input type="date" value={editForm.dueDate} onChange={e => setEditForm({...editForm, dueDate: e.target.value})} required /></td>
+            <td>
+              <div className={styles.action}>
+                <button type="submit" className={styles.create}>Update</button>
+                <button type="button" className={styles.del} onClick={cancel}>Cancel</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      </form>
+       )}
       <section className={styles.tasks}>
         <div className={styles.header}>
           <h2>Project Tasks</h2>
@@ -95,7 +178,7 @@ const ProjectDetails = () => {
               {!tasks.length ? (
                 <tr><td colSpan="7" className={styles.blank}>No tasks created yet.</td></tr>
               ) : tasks.map(task => (
-                <TaskCard key={task.id} task={{ ...task, projectId, projectName: project?.name }} onChangeStatus={changeStatus} onDelete={deleteTask} />
+                <TaskCard key={task.id} task={{ ...task, projectId, projectName: project?.name }} onChangeStatus={changeStatus} onUpdate={editTask} onDelete={deleteTask} />
               ))}
             </tbody>
           </table>

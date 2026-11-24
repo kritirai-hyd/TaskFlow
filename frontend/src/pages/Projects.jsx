@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, X, Trash2, Eye } from "lucide-react";
+import { Plus, X, Trash2, Eye, Edit } from "lucide-react";
 import Layout from "../components/Layout";
 import api from "../services/api";
 import styles from "../styles/projects.module.css";
@@ -8,6 +8,9 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [open, setopen] = useState(false);
@@ -38,6 +41,35 @@ const Projects = () => {
       setError(err.response?.data?.message || "Could not create project.");
     }
   };
+  const editProject = (project) => {
+  setEditId(project.id);
+  setEditName(project.name);
+  setEditDescription(project.description);
+  setopen(false);
+  setError("");
+  }
+   const updateProject = async (e) => {
+    e.preventDefault()
+    setError("")
+    try {
+      const res = await api.put(`/projects/${editId}`, {
+        name: editName,
+        description: editDescription
+      })
+      setProjects(prev=>prev.map(p=>p.id === editId ? res.data: p))
+      setEditId(null);
+      setEditName("");
+      setEditDescription("");
+   }catch (err) {
+    setError(err.response?.data?.message || "Could not update project.");
+  }
+};
+  const cancel = () => {
+  setEditId(null);
+  setEditName("");
+  setEditDescription("");
+  };
+   
   const deleteProject = async (id) => {
     if (!window.confirm("Delete this project?")) return;
     try {
@@ -47,6 +79,7 @@ const Projects = () => {
       setError(err.response?.data?.message || "Could not delete project.");
     }
   };
+ 
   return (
     <Layout>
       <div className={styles.projects}>
@@ -54,9 +87,7 @@ const Projects = () => {
           <h1>Projects</h1>
         </div>
         <button className={styles.add} onClick={() => setopen(!open)}>
-          
-          {open ? <X size={16} /> : <Plus size={16} />}
-         
+        {open ? <X size={16} /> : <Plus size={16} />}
         </button>
       </div>
       {error && <div className={styles.msg}>{error}</div>}
@@ -81,6 +112,41 @@ const Projects = () => {
               onClick={() => setopen(false)}>Cancel</button>
           </div>
         </form>
+      )}
+      {editId !== null && (
+        <form className={styles.form} onSubmit={updateProject}>
+    <h2>Edit Project</h2>
+
+    <input
+      value={editName}
+      onChange={e => setEditName(e.target.value)}
+      placeholder="Project name"
+      required
+      maxLength={120}
+    />
+
+    <textarea
+      value={editDescription}
+      onChange={e => setEditDescription(e.target.value)}
+      placeholder="Description"
+      rows={2}
+      maxLength={2000}
+    />
+
+    <div className={styles.action}>
+      <button type="submit" className={styles.create}>
+        Update
+      </button>
+
+      <button
+        type="button"
+        className={styles.del}
+        onClick={cancel}
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
       )}
       <section className={styles.tasks}>
         <div className={styles.header}>
@@ -111,6 +177,10 @@ const Projects = () => {
                         <Link to={`/projects/${p.id}`} className={styles.open}>
                           <Eye size={14} />
                         </Link>
+                        <button className={styles.open}
+                          onClick={() => editProject(p)}>
+                          <Edit size={14} />
+                        </button>
                         <button className={styles.delete}
                           onClick={() => deleteProject(p.id)}>
                           <Trash2 size={14} />

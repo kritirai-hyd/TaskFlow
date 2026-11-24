@@ -8,6 +8,7 @@ const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   useEffect(() => {
     const loadTasks = async () => {
       try {
@@ -75,6 +76,7 @@ const Tasks = () => {
                       <Link to={`/projects/${t.projectId}`} className={styles.open}>
                         <Eye size={14} />
                       </Link>
+                      
                     </td>
                   </tr>
                 )) : (

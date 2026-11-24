@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Trash2, ExternalLink } from "lucide-react";
+import { Trash2, ExternalLink, Edit } from "lucide-react";
 import styles from "../styles/tcard.module.css";
-const TaskCard = ({ task, onChangeStatus, onDelete }) => (
+const TaskCard = ({ task, onChangeStatus, onUpdate, onDelete }) => (
   <tr>
     <td className={styles.name}>{task.title}</td>
     <td className={styles.subheading}>{task.subheading}</td>
@@ -20,6 +20,7 @@ const TaskCard = ({ task, onChangeStatus, onDelete }) => (
     <td>
       <div className={styles.buttons}>
         {onDelete && <button type="button" className={styles.del} onClick={() => onDelete(task.id)}><Trash2 size={14} /></button>}
+        {onUpdate && <button type="button" className={styles.view} onClick={() => onUpdate(task)}><Edit size={14} /></button>}
         <Link className={styles.view} to={`/projects/${task.projectId}`}><ExternalLink size={14} /></Link>
       </div>
     </td>
